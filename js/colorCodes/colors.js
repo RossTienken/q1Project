@@ -1,7 +1,6 @@
-$(document).ready(function () {
   // ana
   localStorage.setItem('anaPri', '#b69a5a');
-  localStorage.setItem('anaSec', '#090909');
+  localStorage.setItem('anaSec', '#fa5500');
   //
 
   // ari
@@ -136,7 +135,7 @@ $(document).ready(function () {
 
   // van
   localStorage.setItem('vanPri', '#001a5b');
-  localStorage.setItem('vanSec', '##008852');
+  localStorage.setItem('vanSec', '#00a060');
   //
 
   // vgk
@@ -154,4 +153,3 @@ $(document).ready(function () {
   localStorage.setItem('wpjPri', '#001840');
   localStorage.setItem('wpjSec', '#006EC8');
   //
-})

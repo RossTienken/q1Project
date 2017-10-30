@@ -1,9 +1,9 @@
 const $src = localStorage.getItem('team');
-const primary = localStorage.getItem(`${$src}Pri`)
-const secondary = localStorage.getItem(`${$src}Sec`)
 
 
 $(document).ready(function () {
+  const primary = localStorage.getItem(`${$src}Pri`);
+  const secondary = localStorage.getItem(`${$src}Sec`);
 
   // setting styles for custom team page
   $('body').css('background-image',`url(img/logos/${$src}.png)`);
@@ -29,7 +29,7 @@ $(document).ready(function () {
  });
 
   var games = {
-    "async": false,
+    "async": true,
     "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/team_gamelogs.json?team=${$src}`,
     "method": "GET",
     headers: {
@@ -126,11 +126,11 @@ $(document).ready(function () {
       }
       $gameC.append($box);
     }
+      $(".date").css({ 'color': primary, '-webkit-text-stroke': `1.3px ${secondary}`});
   });
-  $(".date").css({ 'color': primary, '-webkit-text-stroke': `1px ${secondary}`});
 
   $.ajax(skatePts).done(function (response) {
-    let player = response.cumulativeplayerstats.playerstatsentry["0"];
+    let player = response.cumulativeplayerstats.playerstatsentry[0];
     let $points = $('#points');
 
     $points.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4> <h5>${player.stats.stats.Points['#text']}</h5>`)
@@ -139,21 +139,21 @@ $(document).ready(function () {
 
   $.ajax(skateGoal).done(function (response) {
     let $goals = $('#goals');
-    let player = response.cumulativeplayerstats.playerstatsentry["0"];
+    let player = response.cumulativeplayerstats.playerstatsentry[0];
 
     $goals.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Goals['#text']}</h5>`)
   });
 
   $.ajax(skateAssist).done(function (response) {
     let $assists = $('#assists');
-    let player = response.cumulativeplayerstats.playerstatsentry["0"];
+    let player = response.cumulativeplayerstats.playerstatsentry[0];
 
     $assists.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Assists['#text']}</h5>`)
   });
 
   $.ajax(skatePim).done(function (response) {
     let $pim = $('#pim');
-    let player = response.cumulativeplayerstats.playerstatsentry["0"];
+    let player = response.cumulativeplayerstats.playerstatsentry[0];
 
     $pim.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.PenaltyMinutes['#text']}</h5>`);
   });
@@ -161,21 +161,21 @@ $(document).ready(function () {
 
   $.ajax(goalWin).done(function (response) {
     let $wins = $('#wins');
-    let player = response.cumulativeplayerstats.playerstatsentry["0"];
+    let player = response.cumulativeplayerstats.playerstatsentry[0];
 
     $wins.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Wins['#text']}</h5>`)
   });
 
   $.ajax(goalGAA).done(function (response) {
     let $gAA = $('#gAA');
-    let player = response.cumulativeplayerstats.playerstatsentry["0"];
+    let player = response.cumulativeplayerstats.playerstatsentry[0];
 
     $gAA.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.GoalsAgainstAverage['#text']}</h5>`)
   });
 
   $.ajax(goalSv).done(function (response) {
     let $saveP = $('#saveP');
-    let player = response.cumulativeplayerstats.playerstatsentry["0"];
+    let player = response.cumulativeplayerstats.playerstatsentry[0];
 
     $saveP.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.SavePercentage['#text']}%</h5>`)
   });
