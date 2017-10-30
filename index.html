@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/index.css" />
+    <title>q1Project</title>
+  </head>
+  <body>
+    <nav>
+      <a class='topleft' href='index.html'></a>
+      <img class='topright' src="img/NHL100.png"/>
+      <div id='logo-label'>
+        <h1 id='logoTienken' class='logo-label'>Tienken</h1>
+        <h1 id='logoStats' class='logo-label'>Stats</h1>
+      </div>
+      <div class="row">
+        <label for="changeTeam">Sort By Team</label>
+      </div>
+      <div class="row">
+        <div class="col">
+          <select class="form-control" name="changeTeam" id="changeTeam">
+            <option value="">-- Select a Team --</option>
+            <option value="ana">Anaheim Ducks</option>
+            <option value="ari">Arizona Coyotes</option>
+            <option value="bos">Boston Bruins</option>
+            <option value="buf">Buffalo Sabres</option>
+            <option value="car">Carolina Hurricanes</option>
+            <option value="cgy">Calgary Flames</option>
+            <option value="chi">Chicago Blackhawks</option>
+            <option value="cbj">Columbus Blue Jackets</option>
+            <option value="col">Colorado Avalanche</option>
+            <option value="dal">Dallas Stars</option>
+            <option value="det">Detroit Red Wings</option>
+            <option value="edm">Edmonton Oilers</option>
+            <option value="flo">Florida Panthers</option>
+            <option value="lak">Los Angeles Kings</option>
+            <option value="min">Minnesota Wild</option>
+            <option value="mtl">Montreal Canadiens</option>
+            <option value="nsh">Nashville Predators</option>
+            <option value="njd">New Jersey Devils</option>
+            <option value="nyi">New York Islanders</option>
+            <option value="nyr">New York Rangers</option>
+            <option value="ott">Ottawa Senators</option>
+            <option value="phi">Philadelphia Flyers</option>
+            <option value="pit">Pittsburgh Penguins</option>
+            <option value="sjs">San Jose Sharks</option>
+            <option value="stl">St. Louis Blues</option>
+            <option value="tbl">Tampa Bay Lightning</option>
+            <option value="tor">Toronto Maple Leafs</option>
+            <option value="van">Vancouver Canucks</option>
+            <option value="vgk">Vegas Golden Knights</option>
+            <option value="wsh">Washington Capitals</option>
+            <option value="wpj">Winnipeg Jets</option>
+          </select>
+        </div>
+        <div class="col">
+          <button id='teamSrc' class='teamSrc' href='team.html'>Search!</button>
+        </div>
+      </div>
+    </nav>
+    <h1 id='lastN'>
+      <span id='lNight'>Last Night's scores</span>
+      <span id='standings'>Standings</span>
+    </h1>
+    <div class='container'>
+      <div id='gameC'></div>
+      <div id='standingC'>
+        <div id="easternC" class='conference'><h2 id='eastC'></h2>
+            <ol id='olEast'></ol>
+            <div id='eastPts'></div>
+        </div>
+        <div id="westernC" class='conference'><h2 id='westC'></h2>
+          <ol id='olWest'></ol>
+          <div id='westPts'></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,217 @@
+body {
+  margin: 0px;
+  text-align: center;
+}
+
+nav {
+  height: 40px;
+  background-color: #dbdbdb;
+  padding: 15px;
+}
+.topleft {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  height: 67px;
+  width: 120px;
+  background: url('../img/tsLogo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.topright {
+  position: absolute;
+  top: 3px;
+  right: 16px;
+  height: 65px;
+  width: 175px;
+}
+#lastN {
+  margin: 0;
+  height: 100px;
+  padding: 20px;
+  text-align: center;
+  letter-spacing: 3px;
+  background-color: black;
+  -webkit-text-stroke: 1.2px ghostwhite;
+  display: grid;
+  grid-template-columns: 68% 30%;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 40px;
+}
+#lNight {
+  grid-column: 1;
+  margin: 10px;
+  padding: 10px;
+  height: 50px;
+  color: silver;
+  font-family: Stencil Std;
+  font-size: 50px;
+}
+#standings {
+  grid-column: 2/3;
+  margin: 10px;
+  padding: 10px;
+  height: 50px;
+  color: silver;
+  font-family: Stencil Std;
+  font-size: 50px;
+}
+#gameC {
+  grid-column: 1;
+  grid-row: 1/1;
+}
+#standingC {
+  grid-column: 2;
+  grid-row: 1/3;
+}
+#standingC {
+  background-color: #002156;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px 20px 0px 20px;
+  font-size: 130%;
+  opacity: 0.95;
+}
+#easternC{
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+}
+#westernC {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+}
+.container {
+  padding: 2%;
+  display: grid;
+  grid-template-columns: 68% 30%;
+  grid-template-rows: 50% 50%;
+  grid-gap: 40px;
+  background: url('../img/nhl-logo.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+#gameC {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 30px;
+}
+.game {
+  background-color: rgba(128, 128, 128, 0.9);
+  color: #fff;
+  border-radius: 5px;
+  border: 4px solid silver;
+  padding: 20px;
+  font-size: 150%;
+}
+#easternC{
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows: 10% 40% 40%;
+}
+#eastC {
+  grid-column: 1/3;
+  grid-row: 1;
+}
+#olEast {
+  grid-column: 1/2;
+  grid-row: 2;
+  margin: 0;
+}
+#eastPts {
+  grid-column: 2/3;
+  grid-row: 2;
+  text-align: right;
+  padding-right: 5px;
+}
+#westernC {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows: 10% 40% 40%;
+}
+#westC {
+  grid-column: 1/3;
+  grid-row: 1;
+}
+#olWest {
+  grid-column: 1/2;
+  grid-row: 2;
+  margin: 0;
+}
+#westPts {
+  grid-column: 2/3;
+  grid-row: 2;
+  text-align: right;
+  padding-right: 5px;
+}
+h3 {
+  margin: 10px;
+  font-size: 100%;
+  font-weight: normal;
+}
+li {
+  margin: 10px;
+  font-size: 100%;
+}
+p {
+  margin: 5px;
+}
+.conference {
+  background-color: #0046b7;
+}
+h2 {
+  font-size: 1.3em;
+}
+ol {
+  text-align: left;
+}
+label {
+  font-weight: bold;
+}
+.row {
+  margin: 10px;
+  display: inline;
+  font-size: 40px;
+  color: #0046b7;
+  font-family: Stencil Std;
+}
+.col {
+  display: inline;
+  margin: 7px;
+
+}
+select#changeTeam {
+  height: calc(2.25rem + 2px);
+  width: auto;
+  font-size: medium;
+  vertical-align: top;
+  border-width: 2px;
+}
+#teamSrc {
+  color: white;
+  font-weight: 600;
+  font-size: large;
+  height: calc(2.25rem + 2px);
+  background-color: #0046b7;
+  border-radius: 5px;
+  border-color: silver;
+  vertical-align: top;
+}
+#logo-label {
+  position: absolute;
+  display: block;
+  top: 17px;
+  line-height: 23px;
+  margin: 0;
+  left: 93px;
+  font-family: Stencil Std;
+}
+.logo-label {
+  margin: 0;
+}
+#logoStats {
+  color: #f20000;
+}
