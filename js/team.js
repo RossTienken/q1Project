@@ -1,21 +1,35 @@
-const $src = localStorage.getItem('team')
+const $src = localStorage.getItem('team');
+const primary = localStorage.getItem(`${$src}Pri`)
+const secondary = localStorage.getItem(`${$src}Sec`)
+
 
 $(document).ready(function () {
+
+  // setting styles for custom team page
   $('body').css('background-image',`url(img/logos/${$src}.png)`);
+
+  $("#recentG").css({ 'color': primary, '-webkit-text-stroke': `2px ${secondary}`});
+
+  $("#teamLead").css({ 'color': primary, '-webkit-text-stroke': `2px ${secondary}`});
+
+  //start of adding content to page
 
   var $body = $('body');
   var $container = $('.container');
   var $gameC = $('#gameC');
-  var $standingC = $('#standingC');
   var $changeTeam = $('#changeTeam');
 
   $('.teamSrc').click(function() {
-  localStorage.setItem('team', $changeTeam.val())
-   window.location = "team.html";
+    if($changeTeam.val() === ""){
+      localStorage.setItem('team', $src);
+    }else {
+      localStorage.setItem('team', $changeTeam.val());
+    }
+    window.location = "team.html";
  });
 
   var games = {
-    "async": true,
+    "async": false,
     "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/team_gamelogs.json?team=${$src}`,
     "method": "GET",
     headers: {
@@ -23,7 +37,7 @@ $(document).ready(function () {
     },
   }
   var skatePts = {
-    "async": true,
+    "async": false,
     "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/cumulative_player_stats.json?team=${$src}&playerstats=Pts&sort=stats.Pts.D`,
     "method": "GET",
     headers: {
@@ -31,7 +45,7 @@ $(document).ready(function () {
     },
   }
   var skateGoal = {
-    "async": true,
+    "async": false,
     "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/cumulative_player_stats.json?team=${$src}&playerstats=G&sort=stats.G.D`,
     "method": "GET",
     headers: {
@@ -39,7 +53,7 @@ $(document).ready(function () {
     },
   }
   var skateAssist = {
-    "async": true,
+    "async": false,
     "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/cumulative_player_stats.json?team=${$src}&playerstats=A&sort=stats.A.D`,
     "method": "GET",
     headers: {
@@ -47,7 +61,7 @@ $(document).ready(function () {
     },
   }
   var skatePim = {
-    "async": true,
+    "async": false,
     "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/cumulative_player_stats.json?team=${$src}&playerstats=Pim&sort=stats.Pim.D`,
     "method": "GET",
     headers: {
@@ -55,7 +69,7 @@ $(document).ready(function () {
     },
   }
   var goalWin = {
-    "async": true,
+    "async": false,
     "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/cumulative_player_stats.json?team=${$src}&playerstats=W&sort=stats.W.D`,
     "method": "GET",
     headers: {
@@ -63,7 +77,7 @@ $(document).ready(function () {
     },
   }
   var goalGAA = {
-    "async": true,
+    "async": false,
     "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/cumulative_player_stats.json?team=${$src}&playerstats=GAA&sort=stats.GAA.D`,
     "method": "GET",
     headers: {
@@ -71,7 +85,7 @@ $(document).ready(function () {
     },
   }
   var goalSv = {
-    "async": true,
+    "async": false,
     "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/cumulative_player_stats.json?team=${$src}&playerstats=Sv%25&sort=stats.Sv%25.D`,
     "method": "GET",
     headers: {
@@ -113,6 +127,7 @@ $(document).ready(function () {
       $gameC.append($box);
     }
   });
+  $(".date").css({ 'color': primary, '-webkit-text-stroke': `1px ${secondary}`});
 
   $.ajax(skatePts).done(function (response) {
     let player = response.cumulativeplayerstats.playerstatsentry["0"];
