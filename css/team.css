@@ -67,7 +67,7 @@ nav {
   text-align: left;
   color: #fff;
   border-radius: 5px;
-  padding: 20px 20px 0px 20px;
+  padding: 0px 20px;
   font-size: 130%;
   opacity: 0.95;
   height: fit-content;
@@ -79,7 +79,7 @@ nav {
   grid-row: 1;
   text-align: center;
   margin: 0px;
-  padding: 10px 20px;
+  padding: 0px 20px 15px;
 }
 #skaters{
   padding: 15px;
