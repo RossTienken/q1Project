@@ -6,7 +6,7 @@ $(document).ready(function () {
   const secondary = localStorage.getItem(`${$src}Sec`);
 
   // setting styles for custom team page
-  $('body').css('background-image',`url(img/logos/${$src}.png)`);
+  $('#body').css('background-image',`url(img/logos/${$src}.png)`);
 
   $("#recentG").css({ 'color': primary, '-webkit-text-stroke': `2px ${secondary}`});
 
@@ -95,7 +95,6 @@ $(document).ready(function () {
 
   $.ajax(games).done(function (response) {
     let newGames = response.teamgamelogs.gamelogs;
-    console.log(newGames)
     for(let i = newGames.length - 1; i >= 0; i--){
       let $box = $('<div>');
       $box.addClass('game');
@@ -127,7 +126,7 @@ $(document).ready(function () {
         homeTeam == 'New York'? homeTeam = 'NY '+ newGames[i].game.homeTeam.Name: homeTeam;
         awayTeam == 'New York'? awayTeam = 'NY '+ newGames[i].game.awayTeam.Name: awayTeam;
 
-        
+
         if (newGames[i].game.homeTeam.Abbreviation == upper) {
           if(newGames[i].stats.GoalsFor['#text'] === newGames[i].stats.GoalsAgainst['#text']){
             if (newGames[i].stats.OvertimeWins["#text"] === 1){
