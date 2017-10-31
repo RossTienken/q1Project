@@ -12,7 +12,7 @@ $(document).ready(function () {
 
   var games = {
     "async": true,
-    "url": "https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/scoreboard.json?fordate=20171029",
+    "url": "https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/scoreboard.json?fordate=20171030",
     "method": "GET",
     headers: {
       "Authorization": "Basic " + btoa('RossTienken' + ":" + 'q1Project')
@@ -35,8 +35,13 @@ $(document).ready(function () {
       let $home = $('<p>');
       let $away = $('<p>');
       for (let j in newGames[i]){
-        $home.text(`${newGames[i].game.homeTeam.City}: ${newGames[i].homeScore}`);
-        $away.text(`${newGames[i].game.awayTeam.City}: ${newGames[i].awayScore}`);
+        let homeTeam = newGames[i].game.homeTeam.City;
+        let awayTeam = newGames[i].game.awayTeam.City;
+        homeTeam == 'New York'? homeTeam = 'NY '+ newGames[i].game.homeTeam.Name: homeTeam;
+        awayTeam == 'New York'? awayTeam = 'NY '+ newGames[i].game.awayTeam.Name: awayTeam;
+
+        $home.text(`${homeTeam}: ${newGames[i].homeScore}`);
+        $away.text(`${awayTeam}: ${newGames[i].awayScore}`);
         $box.append($home);
         $box.append($away);
       }

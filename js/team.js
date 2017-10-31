@@ -95,7 +95,8 @@ $(document).ready(function () {
 
   $.ajax(games).done(function (response) {
     let newGames = response.teamgamelogs.gamelogs;
-    for(let i = newGames.length -1; i > 0; i--){
+    console.log(newGames)
+    for(let i = newGames.length - 1; i >= 0; i--){
       let $box = $('<div>');
       $box.addClass('game');
       $box.attr('id', i);
@@ -115,9 +116,46 @@ $(document).ready(function () {
         }
         $date.text(`${$month} ${dateStr.slice(dateStr.length-2)}`);
 
-        $home.text(`${newGames[i].game.homeTeam.City}: ${newGames[i].stats.GoalsFor['#text']}`);
+        //set goals variables
+        let goalsFor = newGames[i].stats.GoalsFor['#text'];
+        let goalsAgainst = newGames[i].stats.GoalsAgainst['#text'];
+        let upper = $src.toUpperCase();
 
-        $away.text(`${newGames[i].game.awayTeam.City}: ${newGames[i].stats.GoalsAgainst['#text']}`);
+        //set home and away team names & change for New York teams
+        let homeTeam = newGames[i].game.homeTeam.City;
+        let awayTeam = newGames[i].game.awayTeam.City;
+        homeTeam == 'New York'? homeTeam = 'NY '+ newGames[i].game.homeTeam.Name: homeTeam;
+        awayTeam == 'New York'? awayTeam = 'NY '+ newGames[i].game.awayTeam.Name: awayTeam;
+
+        
+        if (newGames[i].game.homeTeam.Abbreviation == upper) {
+          if(newGames[i].stats.GoalsFor['#text'] === newGames[i].stats.GoalsAgainst['#text']){
+            if (newGames[i].stats.OvertimeWins["#text"] === 1){
+              goalsFor++;
+            }else {
+              goalsAgainst++;
+            }
+            $home.text(`${homeTeam}: ${goalsFor}`);
+            $away.text(`${awayTeam}: ${goalsAgainst}`);
+          }
+          else{
+            $home.text(`${homeTeam}: ${goalsFor}`);
+            $away.text(`${awayTeam}: ${goalsAgainst}`);
+          }
+        }else {
+          if(newGames[i].stats.GoalsFor['#text'] === newGames[i].stats.GoalsAgainst['#text']) {
+            if (newGames[i].stats.OvertimeWins["#text"] == 1){
+              goalsFor++;
+            }else {
+              goalsAgainst++;
+            }
+            $home.text(`${homeTeam}: ${goalsAgainst}`);
+            $away.text(`${awayTeam}: ${goalsFor}`);
+          }else {
+            $home.text(`${homeTeam}: ${goalsAgainst}`);
+            $away.text(`${awayTeam}: ${goalsFor}`);
+          }
+        }
 
         $box.append($date);
         $box.append($hr);
@@ -162,8 +200,12 @@ $(document).ready(function () {
   $.ajax(goalWin).done(function (response) {
     let $wins = $('#wins');
     let player = response.cumulativeplayerstats.playerstatsentry[0];
-
-    $wins.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Wins['#text']}</h5>`)
+    let $hasWon = player.stats.stats
+    if($hasWon === null){
+      $wins.append(`<h4>This team has no wins yet</h4>`)
+    }else{
+      $wins.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Wins['#text']}</h5>`)
+    }
   });
 
   $.ajax(goalGAA).done(function (response) {
