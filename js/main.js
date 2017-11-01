@@ -1,3 +1,9 @@
+const d = new Date();
+d.setDate(d.getDate() - 1);
+const day = d.getDate();
+const month = d.getMonth()+1;
+const date = month.toString() + day.toString();
+
 $(document).ready(function () {
   var $body = $('body');
   var $container = $('.container');
@@ -12,7 +18,7 @@ $(document).ready(function () {
 
   var games = {
     "async": true,
-    "url": "https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/scoreboard.json?fordate=20171031",
+    "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/scoreboard.json?fordate=2017${date}`,
     "method": "GET",
     headers: {
       "Authorization": "Basic " + btoa('RossTienken' + ":" + 'q1Project')
