@@ -158,7 +158,7 @@ li {
   font-size: 100%;
 }
 p {
-  margin: 5px;
+  margin: 10px;
 }
 .leaders {
   background-color: #0046b7;
@@ -192,6 +192,13 @@ select#changeTeam {
   font-size: medium;
   vertical-align: top;
   border-width: 2px;
+}
+.overview {
+  margin: 7px;
+  font-weight: bold;
+}
+.hrB {
+  margin-bottom: 5px;
 }
 #teamSrc {
   color: white;
@@ -260,7 +267,7 @@ select#changeTeam {
   grid-template-rows: 50% 50%;
 }
 
-@media screen and (max-width: 1350px) {
+@media screen and (max-device-width: 1350px) {
   #gameC {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
@@ -275,7 +282,7 @@ select#changeTeam {
     padding: 10px;
   }
 }
-@media screen and (max-width: 1100px) {
+@media screen and (max-device-width: 1100px) {
   #gameC {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
@@ -304,7 +311,7 @@ select#changeTeam {
     margin: 0px 10px;
   }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-device-width: 900px) {
   nav {
     grid-area: nav;
   }
@@ -380,7 +387,7 @@ select#changeTeam {
     font-size: 85%
   }
 }
-@media screen and (max-width: 800px){
+@media screen and (max-device-width: 800px){
   .row {
     margin: 0px;
   }
@@ -398,7 +405,7 @@ select#changeTeam {
     font-size: medium;
   }
 }
-@media screen and (max-width: 630px){
+@media screen and (max-device-width: 630px){
   select#changeTeam{
     width: 135px;
   }
@@ -409,11 +416,46 @@ select#changeTeam {
     height: 62px;
   }
 }
-@media screen and (max-width: 530px){
+@media screen and (max-device-width: 530px){
   #row1 {
     padding: 0px;
     height: 100px;
     width: 100px;
     margin-right: 10px;
+  }
+}
+@media screen and (max-device-width: 500px){
+  #leaders {
+    grid-template-columns: 98%;
+    grid-template-rows: 5% auto;
+  }
+  #row1 {
+    display: none;
+  }
+  #teamLeaders {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  #skaters {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    border-width: 20px 20px 15px;
+    border-radius: 5px 5px 0px 0px;
+  }
+  #goalies {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    border-width: 15px 20px 20px;
+    border-radius: 0px 0px 5px 5px;
+  }
+  #recentG {
+    margin: 0px;
+    padding: 0px;
+  }
+  #gameC {
+    grid-gap: 5px;
   }
 }

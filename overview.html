@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/main.js"></script>
-    <link rel="stylesheet" href="css/index.css" />
-    <title>q1Project</title>
+    <script src="js/overview.js"></script>
+    <link rel="stylesheet" href="css/team.css" />
+    <title>Game Overview</title>
   </head>
-  <body>
+  <body id='body'>
     <nav>
       <a class='topleft' href='index.html'></a>
       <img class='topright' src="img/NHL100.png"/>
@@ -58,30 +58,12 @@
             </select>
           </div>
           <div class="col">
-            <button id='teamSrc' class='teamSrc' href='team.html'>Search!</button>
+            <button id='teamSrc' class='teamSrc'>Search!</button>
           </div>
         </div>
       </div>
     </nav>
     <div class='container'>
-      <div id='gameC'>
-        <h1 id='lastN'>
-          <span id='lNight'>Last Night's scores</span>
-        </h1>
-      </div>
-      <div id='standingC'>
-        <h1 id='stand'>
-          <span id='standings'>Standings</span>
-        </h1>
-        <div id="easternC" class='conference'><h2 id='eastC'></h2>
-            <ol id='olEast'></ol>
-            <div id='eastPts'></div>
-        </div>
-        <div id="westernC" class='conference'><h2 id='westC'></h2>
-          <ol id='olWest'></ol>
-          <div id='westPts'></div>
-        </div>
-      </div>
     </div>
   </body>
 </html>

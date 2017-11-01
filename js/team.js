@@ -101,7 +101,12 @@ $(document).ready(function () {
       $box.attr('id', i);
       let $date = $("<span>");
       $date.addClass('date');
-      let $hr = $('<hr>');
+      let $gameID = $('<a>');
+      $gameID.attr("href", "overview.html")
+      $gameID.addClass('overview');
+      let $hrA = $('<hr>');
+      let $hrB = $('<hr>');
+      $hrB.addClass('hrB')
       let $home = $('<p>');
       let $away = $('<p>');
       for (let j in newGames[i]){
@@ -114,6 +119,8 @@ $(document).ready(function () {
           $month = 'November';
         }
         $date.text(`${$month} ${dateStr.slice(dateStr.length-2)}`);
+        $gameID.text(`Overview`)
+        $gameID.val(newGames[i].game.id);
 
         //set goals variables
         let goalsFor = newGames[i].stats.GoalsFor['#text'];
@@ -157,14 +164,22 @@ $(document).ready(function () {
         }
 
         $box.append($date);
-        $box.append($hr);
+        $box.append($hrA);
         $box.append($home);
         $box.append($away);
+        $box.append($hrB);
+        $box.append($gameID);
       }
+      $gameID.click(function(event){
+        localStorage.setItem('id', $(this).val());
+      })
       $gameC.append($box);
     }
       $(".date").css({ 'color': primary, '-webkit-text-stroke': `1.3px ${secondary}`});
+      $('a').css({ 'color': primary, '-webkit-text-stroke': `.77px ${secondary}`});
   });
+
+
 
   $.ajax(skatePts).done(function (response) {
     let player = response.cumulativeplayerstats.playerstatsentry[0];
