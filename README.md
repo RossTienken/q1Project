@@ -1,6 +1,6 @@
 A great site for viewing daily NHL scores, and viewing your favorite teams games and stats leaders.
 
-to test functions. go into the test folder, and open up the text.html in your browser.
+To test functions. go into the test folder, and open up the text.html in your browser.
 
 <------------------------------- Home Page ------------------------------->
 
