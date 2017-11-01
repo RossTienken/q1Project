@@ -168,31 +168,22 @@ $(document).ready(function () {
 
   $.ajax(skatePts).done(function (response) {
     let player = response.cumulativeplayerstats.playerstatsentry[0];
-    let $points = $('#points');
-
-    $points.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4> <h5>${player.stats.stats.Points['#text']}</h5>`)
-
+    $('#points').append(ptsFunc(player));
   });
 
   $.ajax(skateGoal).done(function (response) {
-    let $goals = $('#goals');
     let player = response.cumulativeplayerstats.playerstatsentry[0];
-
-    $goals.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Goals['#text']}</h5>`)
+    $('#goals').append(goalFunc(player));
   });
 
   $.ajax(skateAssist).done(function (response) {
-    let $assists = $('#assists');
     let player = response.cumulativeplayerstats.playerstatsentry[0];
-
-    $assists.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Assists['#text']}</h5>`)
+    $('#assists').append(assistFunc(player))
   });
 
   $.ajax(skatePim).done(function (response) {
-    let $pim = $('#pim');
-    let player = response.cumulativeplayerstats.playerstatsentry[0];
-
-    $pim.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.PenaltyMinutes['#text']}</h5>`);
+    let player = response.cumulativeplayerstats.playerstatsentry[0]
+     $('#pim').append(pimFunc(player));
   });
 
   $.ajax(goalWin).done(function (response) {
@@ -211,18 +202,31 @@ $(document).ready(function () {
   });
 })
 
-function winFunc(result) {
-  let $hasWon = result.stats.stats
+// put functions outside of document ready for testing
+function ptsFunc(player){
+  return (`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Points['#text']}</h5>`)
+}
+function goalFunc(player){
+  return (`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Goals['#text']}</h5>`)
+}
+function assistFunc(player){
+  return (`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Assists['#text']}</h5>`)
+}
+function pimFunc(player){
+  return (`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.PenaltyMinutes['#text']}</h5>`)
+}
+function winFunc(player) {
+  let $hasWon = player.stats.stats
   if($hasWon === null){
     return (`<h4>This team has no wins yet</h4>`)
   }else{
-    return (`<h4>${result.player.FirstName} ${result.player.LastName}</h4><h5>${result.stats.stats.Wins['#text']}</h5>`)
+    return (`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Wins['#text']}</h5>`)
   }
 }
-function gaaFunc(result) {
-  return (`<h4>${result.player.FirstName} ${result.player.LastName}</h4><h5>${result.stats.stats.GoalsAgainstAverage['#text']}</h5>`)
+function gaaFunc(player) {
+  return (`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.GoalsAgainstAverage['#text']}</h5>`)
 }
 
-function savePercent (result) {
-  return (`<h4>${result.player.FirstName} ${result.player.LastName}</h4><h5>${result.stats.stats.SavePercentage['#text']}%</h5>`)
+function savePercent (player) {
+  return (`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.SavePercentage['#text']}%</h5>`)
 }

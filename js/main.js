@@ -12,7 +12,7 @@ $(document).ready(function () {
 
   var games = {
     "async": true,
-    "url": "https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/scoreboard.json?fordate=20171030",
+    "url": "https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/scoreboard.json?fordate=20171031",
     "method": "GET",
     headers: {
       "Authorization": "Basic " + btoa('RossTienken' + ":" + 'q1Project')
