@@ -195,30 +195,34 @@ $(document).ready(function () {
     $pim.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.PenaltyMinutes['#text']}</h5>`);
   });
 
-
   $.ajax(goalWin).done(function (response) {
-    let $wins = $('#wins');
     let player = response.cumulativeplayerstats.playerstatsentry[0];
-    let $hasWon = player.stats.stats
-    if($hasWon === null){
-      $wins.append(`<h4>This team has no wins yet</h4>`)
-    }else{
-      $wins.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.Wins['#text']}</h5>`)
-    }
+    $('#wins').append(winFunc(player));
   });
 
   $.ajax(goalGAA).done(function (response) {
-    let $gAA = $('#gAA');
     let player = response.cumulativeplayerstats.playerstatsentry[0];
-
-    $gAA.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.GoalsAgainstAverage['#text']}</h5>`)
+    $('#gAA').append(gaaFunc(player))
   });
 
   $.ajax(goalSv).done(function (response) {
-    let $saveP = $('#saveP');
     let player = response.cumulativeplayerstats.playerstatsentry[0];
-
-    $saveP.append(`<h4>${player.player.FirstName} ${player.player.LastName}</h4><h5>${player.stats.stats.SavePercentage['#text']}%</h5>`)
+    $('#saveP').append(savePercent(player))
   });
-
 })
+
+function winFunc(result) {
+  let $hasWon = result.stats.stats
+  if($hasWon === null){
+    return (`<h4>This team has no wins yet</h4>`)
+  }else{
+    return (`<h4>${result.player.FirstName} ${result.player.LastName}</h4><h5>${result.stats.stats.Wins['#text']}</h5>`)
+  }
+}
+function gaaFunc(result) {
+  return (`<h4>${result.player.FirstName} ${result.player.LastName}</h4><h5>${result.stats.stats.GoalsAgainstAverage['#text']}</h5>`)
+}
+
+function savePercent (result) {
+  return (`<h4>${result.player.FirstName} ${result.player.LastName}</h4><h5>${result.stats.stats.SavePercentage['#text']}%</h5>`)
+}
