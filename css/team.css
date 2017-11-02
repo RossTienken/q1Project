@@ -226,8 +226,8 @@ select#changeTeam {
   color: #f20000;
 }
 .date {
-  padding: 3px 10px;
-  font-size: 35px;
+  padding: 3px 0px;
+  font-size: 28px;
   font-weight: 600;
   font-family: sans-serif;
 }
@@ -280,6 +280,9 @@ select#changeTeam {
   }
   #teamLead {
     padding: 10px;
+  }
+  .date {
+    font-size: 26px;
   }
 }
 @media screen and (max-device-width: 1100px) {
@@ -457,5 +460,8 @@ select#changeTeam {
   }
   #gameC {
     grid-gap: 5px;
+  }
+  .date {
+    font-size: 24px;
   }
 }
