@@ -42,11 +42,13 @@ nav {
   grid-column-gap: 40px;
 }
 .container {
+  background: url('../img/NHLice.jpg');
+  background-size: contain;
   padding: 2%;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: auto;
-  grid-gap: 40px;
+  grid-gap: 0px;
 }
 .summary {
   display: grid;
@@ -93,4 +95,342 @@ select#changeTeam {
   border-radius: 5px;
   border-color: silver;
   vertical-align: top;
+}
+#quickSum {
+  border: 2px solid black;
+  background-color:  rgba(255, 255, 255, 0.75);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+.teamH {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+.teamA {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+.final {
+  grid-column: 2 / 3;
+}
+#statsSum {
+  border: 2px solid black;
+  background-color:  rgba(255, 255, 255, 0.75);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 0px;
+}
+.home {
+  grid-column: 1 / 2;
+}
+.away {
+  grid-column: 3 / 4;
+}
+#Shots {
+  padding: 15px;
+  margin: 0px;
+  grid-row: 1 / 2;
+  /*border-top: 2px solid black;*/
+}
+#Hits {
+  padding: 15px;
+  margin: 0px;
+  grid-row: 2 / 3;
+  border-top: 2px solid black;
+}
+#FaceoffWins {
+  padding: 15px;
+  margin: 0px;
+  grid-row: 3 / 4;
+  border-top: 2px solid black;
+}
+#FaceoffPercent {
+  padding: 15px;
+  margin: 0px;
+  grid-row: 4 / 5;
+  border-top: 2px solid black;
+}
+#PenaltyMinutes {
+  padding: 15px;
+  margin: 0px;
+  grid-row: 5 / 6;
+  border-top: 2px solid black;
+}
+#shots {
+  padding: 15px;
+  margin: 0px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+#hits {
+  padding: 15px;
+  margin: 0px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+#faceWon {
+  padding: 15px;
+  margin: 0px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+#facePer {
+  padding: 15px;
+  margin: 0px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+}
+#pim {
+  padding: 15px;
+  margin: 0px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+}
+h2 {
+  font-size: 25px;
+}
+#periodSum {
+  text-align: left;
+  display: grid;
+  border: 2px solid black;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+}
+.per1 {
+  margin: 0px;
+  padding: 20px;
+  background-color: rgba(193, 193, 193, 0.9);
+  grid-row: 1 / 2;
+}
+.p1 {
+  padding: 0px;
+  grid-row: 2 / 3;
+  background-color: rgba(255, 255, 255, 0.75);
+
+  display: grid;
+  grid-template-columns: 10% 10% 80%;
+  grid-template-rows: auto auto;
+  grid-gap: 0px;
+}
+.per2 {
+  margin: 0px;
+  padding: 20px;
+  background-color: rgba(193, 193, 193, 0.9);
+  grid-row: 3 / 4;
+}
+.p2 {
+  padding: 0px;
+  grid-row: 4 / 5;
+  background-color: rgba(255, 255, 255, 0.75);
+
+  display: grid;
+  grid-template-columns: 10% 10% 80%;
+  grid-template-rows: auto auto;
+  grid-gap: 0px;
+}
+.per3 {
+  margin: 0px;
+  padding: 20px;
+  background-color: rgba(193, 193, 193, 0.9);
+  grid-row: 5 / 6;
+}
+.p3 {
+  padding: 0px;
+  grid-row: 6 / 7;
+  background-color: rgba(255, 255, 255, 0.75);
+
+  display: grid;
+  grid-template-columns: 10% 10% 80%;
+  grid-template-rows: auto auto;
+  grid-gap: 0px;
+}
+.per4 {
+  margin: 0px;
+  padding: 20px;
+  background-color: rgba(193, 193, 193, 0.9);
+  grid-row: 7 / 8;
+}
+.p4 {
+  padding: 0px;
+  grid-row: 8 / 9;
+  background-color: rgba(255, 255, 255, 0.75);
+
+  display: grid;
+  grid-template-columns: 10% 10% 80%;
+  grid-template-rows: auto auto;
+  grid-gap: 0px;
+}
+.p4 h4 {
+  grid-column: 1 / 4;
+  margin: 15px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: normal;
+}
+.per5 {
+  margin: 0px;
+  padding: 20px;
+  background-color: rgba(193, 193, 193, 0.9);
+  grid-row: 9 / 10;
+}
+.p5 {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.75);
+  grid-row: 10 / 11
+}
+.time {
+  margin: 0px;
+  padding: 10px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  text-align: center;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+.team {
+  margin: 0px;
+  padding: 10px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  text-align: center;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+.scoredBy {
+  margin: 0px;
+  padding: 10px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  text-align: center;
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+.goalTime {
+  text-align: center;
+  grid-column: 1 / 2;
+  margin: 0px;
+  padding: 10px;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+.goalTeam {
+  text-align: center;
+  grid-column: 2 / 3;
+  margin: 0px;
+  padding: 10px;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+.goalSum {
+  text-align: center;
+  grid-column: 3 / 4;
+  border-bottom: 2px solid black;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 100%
+}
+.goalSum h2 {
+  grid-column: 1 / 2;
+  margin: 0px;
+  padding: 15px;
+  height: 25px;
+  font-weight: normal;
+}
+.goalSum h3{
+  font-weight: normal;
+  font-size: 20px;
+}
+.assist1 {
+  text-align: center;
+  grid-column: 3 / 4;
+  margin: 0px;
+  padding: 10px;
+  border-bottom: 2px solid black;
+}
+.assist2 {
+  text-align: center;
+  grid-column: 3 / 4;
+  margin: 0px;
+  padding: 10px;
+  border-bottom: 2px solid black;
+}
+
+@media screen and (max-device-width: 1100px){
+  nav {
+    padding: 10px 15px 15px;
+  }
+  .topright{
+    display: none;
+  }
+  #teamChange {
+    display: inline-flex;
+    flex-flow: row-reverse;
+    width: 100%;
+  }
+  #row1 {
+    order: 2;
+  }
+  #row2 {
+    order: 1;
+  }
+  .row {
+    margin: 0px 10px;
+  }
+  .topleft {
+    height: 62px;
+  }
+}
+@media screen and (max-device-width: 930px){
+  #logo-label {
+    display: none
+  }
+}
+@media screen and (max-device-width: 860px){
+  .row {
+    margin: 0px;
+  }
+  #row1 {
+    font-size: x-large;
+    padding: 1%;
+  }
+}
+@media screen and (max-device-width: 770px) {
+  select#changeTeam {
+    width: 135px;
+  }
+  #teamSrc {
+    font-size: medium;
+  }
+  #row1 {
+    padding: 0px;
+    width: 115px;
+    margin-right: 10px;
+  }
+}
+@media screen and (max-device-width: 500px){
+  #standingC {
+    grid-template-columns: 98%;
+    grid-template-rows: 5% auto;
+  }
+  #row1 {
+    display: none;
+  }
 }
