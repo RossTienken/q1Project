@@ -7,7 +7,6 @@ nav {
   height: 40px;
   background-color: #dbdbdb;
   padding: 15px;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 .topleft {
   position: absolute;
@@ -396,5 +395,9 @@ select#changeTeam {
     grid-row: 3 / 4;
     border-width: 15px 20px 20px;
     border-radius: 0px 0px 5px 5px;
+  }
+  #lNight {
+    margin: 0px;
+    padding: 0px;
   }
 }
