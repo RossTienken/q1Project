@@ -6,6 +6,8 @@ $(document).ready(function () {
   var $quickSum = $('#quickSum');
   var $statsSum = $('#statsSum');
   var $periodSum = $('#periodSum');
+  var $quickPer = $('#quickPer');
+  var $totals = $('#totals');
 
   $('.teamSrc').click(function() {
     if($changeTeam.val() === ""){
@@ -25,6 +27,42 @@ $(document).ready(function () {
    },
  }
  $.ajax(game).done(function (response) {
+   //add team abbreviations to scoreboard
+   let $abrHome = response.gameboxscore.game.homeTeam.Abbreviation;
+   $quickPer.append(`<h1 class='abrHome'>${$abrHome}</h1>`);
+   let hLow = $abrHome.toLowerCase();
+   let $abrAway = response.gameboxscore.game.awayTeam.Abbreviation;
+   $quickPer.append(`<h1 class='abrAway'>${$abrAway}</h1>`);
+   let aLow = $abrAway.toLowerCase();
+   $('.logoHome').css('background-image',`url(img/logos/${hLow}.png)`);
+   $('.logoAway').css('background-image',`url(img/logos/${aLow}.png)`);
+
+   //add final scores to scoreboard and change font colors
+   let priHome = localStorage.getItem(`${hLow}Pri`);
+   let secHome = localStorage.getItem(`${hLow}Sec`);
+   let priAway = localStorage.getItem(`${aLow}Pri`);
+   let secAway = localStorage.getItem(`${aLow}Sec`);
+
+   let $finalH = response.gameboxscore.periodSummary.periodTotals.homeScore;
+   $totals.append(`<h1 class='finalH'>${$finalH}</h1>`);
+   let $finalA = response.gameboxscore.periodSummary.periodTotals.awayScore;
+   $totals.append(`<h1 class='finalA'>${$finalA}</h1>`);
+
+   //home colors
+   $(".teamH").css({ 'color': priHome, '-webkit-text-stroke': `0.5px ${secHome}`});
+   $(".finalH").css({ 'color': priHome, '-webkit-text-stroke': `2px ${secHome}`});
+
+   //away colors
+   $(".teamA").css({ 'color': priAway, '-webkit-text-stroke': `0.5px ${secAway}`});
+   $(".finalA").css({ 'color': priAway, '-webkit-text-stroke': `2px ${secAway}`});
+
+   //adding scores by team per period
+   let sum = response.gameboxscore.periodSummary.period
+   for(let num = 0; num < 3; num++){
+     $quickPer.append(`<h1 class='home${num+1}'>${sum[num].homeScore}</h1>`);
+     $quickPer.append(`<h1 class='away${num+1}'>${sum[num].awayScore}</h1>`);
+   }
+
    let periods = response.gameboxscore.periodSummary.period;
    console.log(response);
    let $home = response.gameboxscore.homeTeam.homeTeamStats;

@@ -37,11 +37,17 @@ $(document).ready(function () {
     let newGames = response.scoreboard.gameScore;
     for(let i in newGames){
       let $box = $('<div>');
+      let $hrA = $('<hr>');
       $box.addClass('game');
-      $box.attr('id', i);
+      let $gameID = $('<a>');
+      $gameID.attr("href", "overview.html")
+      $gameID.addClass('overview');
       let $home = $('<p>');
       let $away = $('<p>');
       for (let j in newGames[i]){
+        $gameID.text(`Overview`)
+        $gameID.val(newGames[i].game.ID);
+
         let homeTeam = newGames[i].game.homeTeam.City;
         let awayTeam = newGames[i].game.awayTeam.City;
         homeTeam == 'New York'? homeTeam = 'NY '+ newGames[i].game.homeTeam.Name: homeTeam;
@@ -51,7 +57,12 @@ $(document).ready(function () {
         $away.text(`${awayTeam}: ${newGames[i].awayScore}`);
         $box.append($home);
         $box.append($away);
+        $box.append($hrA);
+        $box.append($gameID);
       }
+      $gameID.click(function(event){
+        localStorage.setItem('id', $(this).val());
+      })
       $gameC.append($box);
     }
   });
