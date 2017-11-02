@@ -4,10 +4,6 @@ $(document).ready(function () {
   var $container = $('.container');
   var $changeTeam = $('#changeTeam');
 
-  let $h1 = $('<h1>');
-  $h1.text(`${$id}`);
-  $container.append($h1);
-
   $('.teamSrc').click(function() {
     if($changeTeam.val() === ""){
       localStorage.setItem('team', $src);
@@ -27,14 +23,30 @@ $(document).ready(function () {
  }
  $.ajax(game).done(function (response) {
    let periods = response.gameboxscore.periodSummary.period;
-   let $hA = $('<h1>');
-   for(let i = 0; i < periods.length - 1; i++) {
-     console.log(periods[i].scoring.goalScored)
-     let goals = periods[i].scoring.goalScored;
-     for(let j of goals){
-       $hA.html(`Goal Scorer: ${j.goalScorer.FirstName} ${j.goalScorer.LastName} Time: ${j.time} `)
+   for(let i = 0; i < periods.length; i++) {
+     let $box;
+     let goals = periods[i].scoring;
+     let length;
+     $box = $('<div>');
+     $box.addClass('summary');
+     let $perNum = $('<h1>');
+     $perNum.text(`Period: ${i+1}`)
+     if (goals !== null){
+        length = goals.goalScored.length;
+      }else {
+        length = 0;
+      }
+      $box.append($perNum)
+     for(let j = 0; j < length; j++){
+       let $hA = $('<h1>');
+       let result;
+       if (goals !== undefined){
+         $hA.text(`Goal Scorer: ${goals.goalScored[j].goalScorer.FirstName} ${goals.goalScored[j].goalScorer.LastName} Time: ${goals.goalScored[j].time}`);
+         $box.append($hA)
+       }
+       (result)
      }
-     $container.append($hA)
+     $container.append($box)
    }
  })
 })

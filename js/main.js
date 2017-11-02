@@ -186,7 +186,7 @@ $(document).ready(function () {
   //
 
   // phi
-  localStorage.setItem('phiPri', 'f84800');
+  localStorage.setItem('phiPri', '#f84800');
   localStorage.setItem('phiSec', '#000000');
   //
 
