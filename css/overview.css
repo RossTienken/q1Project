@@ -585,7 +585,7 @@ h4 {
   grid-column: 3 / 4;
   border-bottom: 2px solid black;
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 45% 55%;
   grid-template-rows: 100%
 }
 .goalSum h2 {

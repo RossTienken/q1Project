@@ -62,7 +62,6 @@ $(document).ready(function () {
      $quickPer.append(`<h1 class='home${num+1}'>${sum[num].homeScore}</h1>`);
      $quickPer.append(`<h1 class='away${num+1}'>${sum[num].awayScore}</h1>`);
    }
-
    let periods = response.gameboxscore.periodSummary.period;
    let $home = response.gameboxscore.homeTeam.homeTeamStats;
    let $away = response.gameboxscore.awayTeam.awayTeamStats;
@@ -147,7 +146,6 @@ $(document).ready(function () {
      }
      for(let f = length; f <= (-1); f++) {
        let shootSum = response.gameboxscore.periodSummary.period[4].shootoutAttempts.shootoutAttempt;
-       console.log(response.gameboxscore.periodSummary.period[4])
        let homeCount = 0;
        let awayCount = 0;
        let $finalScore = response.gameboxscore.periodSummary.period[4];
