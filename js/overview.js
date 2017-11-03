@@ -64,7 +64,6 @@ $(document).ready(function () {
    }
 
    let periods = response.gameboxscore.periodSummary.period;
-   console.log(response);
    let $home = response.gameboxscore.homeTeam.homeTeamStats;
    let $away = response.gameboxscore.awayTeam.awayTeamStats;
    for(let homeStat in $home){
@@ -119,7 +118,7 @@ $(document).ready(function () {
        let $goalTime = $('<h2>');
        $goalTime.addClass('goalTime');
        let $goalTeam = $('<h2>');
-       $goalTeam.addClass('goalTeam')
+       $goalTeam.addClass('goalTeam');
        let $sumG = $('<div>');
        $sumG.addClass('goalSum');
 
@@ -145,6 +144,62 @@ $(document).ready(function () {
        $hB.text('no goals scored');
        $gSum.append($hB);
        $perSum.append($gSum)
+     }
+     for(let f = length; f <= (-1); f++) {
+       let shootSum = response.gameboxscore.periodSummary.period[4].shootoutAttempts.shootoutAttempt;
+       let $finalScore = response.gameboxscore.periodSummary.period[4];
+       let $total = $('<h2>');
+       $total.addClass('soTotal');
+       $total.text('Total');
+       $gSum.append(`<h1 class='soHome'>${$abrHome}</h1>`);
+       $gSum.append(`<h1 class='soAway'>${$abrAway}</h1>`);
+       for(let ele = 0; ele < shootSum.length; ele++){
+         let $goalTeam = $('<h2>');
+         let $shot = $('<div>');
+         $shot.addClass('shot');
+
+         let $soGoalH = $('<h1>');
+         $soGoalH.addClass('soGoalH');
+         let $soGoalA = $('<h1>');
+         $soGoalA.addClass('soGoalA');
+
+         let shooter = shootSum[ele].shooter;
+         $shot.append(`<h2>Shot attempt by ${shooter.FirstName} ${shooter.LastName} ${shootSum[ele].outcome}</h2>`)
+
+         $goalTeam.addClass('goalTeam');
+         $goalTeam.text(`${shootSum[ele].teamAbbreviation}`)
+         if(ele%2 === 0){
+           $goalTeam.css({ 'background-color': 'rgba(41, 41, 41, 0.32)'});
+           $shot.css({ 'background-color': 'rgba(41, 41, 41, 0.32)'});
+           $soGoalH.css({ 'background-color': 'rgba(41, 41, 41, 0.32)'});
+           $soGoalA.css({ 'background-color': 'rgba(41, 41, 41, 0.32)'});
+
+           if(shootSum[ele].outcome === 'Scored'){
+             $soGoalH.text('1');
+             $soGoalA.text('0');
+           }else {
+             $soGoalH.text('0');
+             $soGoalA.text('0');
+           }
+         }else{
+           if(shootSum[ele].outcome === 'Scored'){
+             $soGoalH.text('0');
+             $soGoalA.text('1');
+           }else {
+             $soGoalH.text('0');
+             $soGoalA.text('0');
+           }
+         }
+
+         $gSum.append($goalTeam)
+         $gSum.append($shot)
+         $gSum.append($soGoalH)
+         $gSum.append($soGoalA)
+         $gSum.append($total)
+         $perSum.append($gSum)
+       }
+       $gSum.append(`<h2 class='homeTotal'>${$finalScore.homeScore}</h2>`)
+       $gSum.append(`<h2 class='awayTotal'>${$finalScore.awayScore}</h2>`)
      }
      $periodSum.append($perSum)
    }
