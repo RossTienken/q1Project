@@ -188,7 +188,7 @@ $(document).ready(function () {
              }
            }else {
              if(shootSum[ele].outcome === 'Scored'){
-               $soGoalH.text('0');
+               $soGoalH.text('1');
                $soGoalA.text('0');
                awayCount++;
              }else {
@@ -209,7 +209,7 @@ $(document).ready(function () {
              else {
                if(shootSum[ele].outcome === 'Scored'){
                  $soGoalH.text('0');
-                 $soGoalA.text('0');
+                 $soGoalA.text('1');
                  awayCount++;
                }else {
                  $soGoalH.text('0');
