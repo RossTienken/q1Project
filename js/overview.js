@@ -147,6 +147,9 @@ $(document).ready(function () {
      }
      for(let f = length; f <= (-1); f++) {
        let shootSum = response.gameboxscore.periodSummary.period[4].shootoutAttempts.shootoutAttempt;
+       console.log(response.gameboxscore.periodSummary.period[4])
+       let homeCount = 0;
+       let awayCount = 0;
        let $finalScore = response.gameboxscore.periodSummary.period[4];
        let $total = $('<h2>');
        $total.addClass('soTotal');
@@ -174,21 +177,45 @@ $(document).ready(function () {
            $soGoalH.css({ 'background-color': 'rgba(41, 41, 41, 0.32)'});
            $soGoalA.css({ 'background-color': 'rgba(41, 41, 41, 0.32)'});
 
-           if(shootSum[ele].outcome === 'Scored'){
-             $soGoalH.text('1');
-             $soGoalA.text('0');
+           if (shootSum[0].teamAbbreviation === $abrHome) {
+             if(shootSum[ele].outcome === 'Scored'){
+               $soGoalH.text('1');
+               $soGoalA.text('0');
+               homeCount++;
+             }else {
+               $soGoalH.text('0');
+               $soGoalA.text('0');
+             }
            }else {
-             $soGoalH.text('0');
-             $soGoalA.text('0');
+             if(shootSum[ele].outcome === 'Scored'){
+               $soGoalH.text('0');
+               $soGoalA.text('0');
+               awayCount++;
+             }else {
+               $soGoalH.text('0');
+               $soGoalA.text('0');
+             }
            }
          }else{
-           if(shootSum[ele].outcome === 'Scored'){
-             $soGoalH.text('0');
-             $soGoalA.text('1');
-           }else {
-             $soGoalH.text('0');
-             $soGoalA.text('0');
-           }
+           if (shootSum[0].teamAbbreviation === $abrAway)
+             if(shootSum[ele].outcome === 'Scored'){
+               $soGoalH.text('0');
+               $soGoalA.text('1');
+               homeCount++;
+             }else {
+               $soGoalH.text('0');
+               $soGoalA.text('0');
+             }
+             else {
+               if(shootSum[ele].outcome === 'Scored'){
+                 $soGoalH.text('0');
+                 $soGoalA.text('0');
+                 awayCount++;
+               }else {
+                 $soGoalH.text('0');
+                 $soGoalA.text('0');
+               }
+             }
          }
 
          $gSum.append($goalTeam)
@@ -198,8 +225,8 @@ $(document).ready(function () {
          $gSum.append($total)
          $perSum.append($gSum)
        }
-       $gSum.append(`<h2 class='homeTotal'>${$finalScore.homeScore}</h2>`)
-       $gSum.append(`<h2 class='awayTotal'>${$finalScore.awayScore}</h2>`)
+       $gSum.append(`<h2 class='homeTotal'>${homeCount}</h2>`)
+       $gSum.append(`<h2 class='awayTotal'>${awayCount}</h2>`)
      }
      $periodSum.append($perSum)
    }
