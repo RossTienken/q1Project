@@ -574,6 +574,9 @@ h4 {
   border-bottom: 2px solid black;
   border-right: 2px solid black;
 }
+#GoalsFor {
+  display: none;
+}
 .goalTeam {
   text-align: center;
   grid-column: 2 / 3;
@@ -830,10 +833,10 @@ h4 {
     font-size: 35px;
   }
   .finalH {
-    font-size: 70px;
+    font-size: 80px;
   }
   .finalA {
-    font-size: 70px;
+    font-size: 80px;
   }
   .col {
     margin: 1px;

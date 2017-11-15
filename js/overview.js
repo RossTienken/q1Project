@@ -20,7 +20,7 @@ $(document).ready(function () {
 
  var game = {
    "async": true,
-   "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/game_boxscore.json?gameid=${$id}&teamstats=F/O%20%25,F/O%20W,Ht,PIM,Sh&playerstats=none`,
+   "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/game_boxscore.json?gameid=${$id}&teamstats=gF,F/O%20%25,F/O%20W,Ht,PIM,Sh&playerstats=none`,
    "method": "GET",
    headers: {
      "Authorization": "Basic " + btoa('RossTienken' + ":" + 'q1Project')
@@ -43,18 +43,6 @@ $(document).ready(function () {
    let priAway = localStorage.getItem(`${aLow}Pri`);
    let secAway = localStorage.getItem(`${aLow}Sec`);
 
-   let $finalH = response.gameboxscore.periodSummary.periodTotals.homeScore;
-   $totals.append(`<h1 class='finalH'>${$finalH}</h1>`);
-   let $finalA = response.gameboxscore.periodSummary.periodTotals.awayScore;
-   $totals.append(`<h1 class='finalA'>${$finalA}</h1>`);
-
-   //home colors
-   $(".teamH").css({ 'color': priHome, '-webkit-text-stroke': `0.5px ${secHome}`});
-   $(".finalH").css({ 'color': priHome, '-webkit-text-stroke': `2px ${secHome}`});
-
-   //away colors
-   $(".teamA").css({ 'color': priAway, '-webkit-text-stroke': `0.5px ${secAway}`});
-   $(".finalA").css({ 'color': priAway, '-webkit-text-stroke': `2px ${secAway}`});
 
    //adding scores by team per period
    let sum = response.gameboxscore.periodSummary.period
@@ -71,6 +59,28 @@ $(document).ready(function () {
    for(let awayStat in $away){
      $statsSum.append(`<h1 class='away' id='${awayStat}'>${$away[awayStat]['#text']}</h1>`)
    }
+
+    let $finalH = response.gameboxscore.homeTeam.homeTeamStats.GoalsFor["#text"];
+    let $finalA = response.gameboxscore.awayTeam.awayTeamStats.GoalsFor["#text"];
+
+
+    if (periods.length === 5){
+      let homeSoTotal = response.gameboxscore.periodSummary.period[4].homeScore
+      let awaySoTotal = response.gameboxscore.periodSummary.period[4].awayScore
+
+      homeSoTotal > awaySoTotal? $finalH++: $finalA++;
+    }
+    $totals.append(`<h1 class='finalH'>${$finalH}</h1>`);
+    $totals.append(`<h1 class='finalA'>${$finalA}</h1>`);
+
+    //home colors
+    $(".teamH").css({ 'color': priHome, '-webkit-text-stroke': `0.5px ${secHome}`});
+    $(".finalH").css({ 'color': priHome, '-webkit-text-stroke': `2px ${secHome}`});
+
+    //away colors
+    $(".teamA").css({ 'color': priAway, '-webkit-text-stroke': `0.5px ${secAway}`});
+    $(".finalA").css({ 'color': priAway, '-webkit-text-stroke': `2px ${secAway}`});
+
 
    for(let i = 0; i < periods.length; i++) {
      let $perSum = $('<div>');
@@ -167,6 +177,7 @@ $(document).ready(function () {
          let shooter = shootSum[ele].shooter;
          $shot.append(`<h2>Shot attempt by ${shooter.FirstName} ${shooter.LastName} ${shootSum[ele].outcome}</h2>`)
 
+console.log(response)
          $goalTeam.addClass('goalTeam');
          $goalTeam.text(`${shootSum[ele].teamAbbreviation}`)
          if(ele%2 === 0){
@@ -186,34 +197,34 @@ $(document).ready(function () {
              }
            }else {
              if(shootSum[ele].outcome === 'Scored'){
-               $soGoalH.text('1');
-               $soGoalA.text('0');
+               $soGoalH.text('0');
+               $soGoalA.text('1');
                awayCount++;
              }else {
                $soGoalH.text('0');
                $soGoalA.text('0');
              }
            }
-         }else{
-           if (shootSum[0].teamAbbreviation === $abrAway)
+         }else {
+           if (shootSum[0].teamAbbreviation === $abrHome) {
              if(shootSum[ele].outcome === 'Scored'){
                $soGoalH.text('0');
                $soGoalA.text('1');
+               awayCount++;
+             }else {
+               $soGoalH.text('0');
+               $soGoalA.text('0');
+             }
+           }else {
+             if(shootSum[ele].outcome === 'Scored'){
+               $soGoalH.text('1');
+               $soGoalA.text('0');
                homeCount++;
              }else {
                $soGoalH.text('0');
                $soGoalA.text('0');
              }
-             else {
-               if(shootSum[ele].outcome === 'Scored'){
-                 $soGoalH.text('0');
-                 $soGoalA.text('1');
-                 awayCount++;
-               }else {
-                 $soGoalH.text('0');
-                 $soGoalA.text('0');
-               }
-             }
+           }
          }
 
          $gSum.append($goalTeam)
