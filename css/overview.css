@@ -831,11 +831,11 @@ h4 {
 }
 @media screen and (max-device-width: 400px) {
   .teamH {
-    font-size: 60px;
+    font-size: 50px;
     padding-top: 10px;
   }
   .teamA {
-    font-size: 60px;
+    font-size: 50px;
     padding-top: 10px;
   }
   .final {
