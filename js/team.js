@@ -112,11 +112,32 @@ $(document).ready(function () {
       for (let j in newGames[i]){
         let dateStr = newGames[i].game.date;
         let $month;
+        if(dateStr.slice(5, 7) == 1){
+          $month = 'January';
+        }
+        if(dateStr.slice(5, 7) == 2){
+          $month = 'February';
+        }
+        if(dateStr.slice(5, 7) == 3){
+          $month = 'March';
+        }
+        if(dateStr.slice(5, 7) == 4){
+          $month = 'April';
+        }
+        if(dateStr.slice(5, 7) == 5){
+          $month = 'July';
+        }
+        if(dateStr.slice(5, 7) == 9){
+          $month = 'September';
+        }
         if(dateStr.slice(5, 7) == 10){
           $month = 'October';
         }
         if(dateStr.slice(5, 7) == 11){
           $month = 'November';
+        }
+        if(dateStr.slice(5, 7) == 12){
+          $month = 'December';
         }
         $date.text(`${$month} ${dateStr.slice(dateStr.length-2)}`);
         $gameID.text(`Overview`)
