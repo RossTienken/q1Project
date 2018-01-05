@@ -1,8 +1,11 @@
 const d = new Date();
 d.setDate(d.getDate() - 1);
-const day = d.getDate();
-const month = d.getMonth()+1;
+let day = d.getDate();
+let month = d.getMonth()+1;
 const year = d.getFullYear();
+
+if(month < 10) month = '0' + month
+if(day < 10) day = '0' + day
 const date = year.toString() + month.toString() + day.toString();
 
 $(document).ready(function () {
@@ -17,6 +20,7 @@ $(document).ready(function () {
    window.location = "team.html";
  });
 
+console.log(date)
   var games = {
     "async": true,
     "url": `https://api.mysportsfeeds.com/v1.1/pull/nhl/2017-2018-regular/scoreboard.json?fordate=${date}`,
